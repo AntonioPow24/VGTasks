@@ -6,9 +6,6 @@ import { useSideBarContext } from '../context/SideBarContext'
 
 export default function SideBar() {
 
-    const [linkActive , setlinkActive] = useState('tasks')
-
-
 
     const {toogleSideBar} = useSideBarContext()
 
@@ -20,7 +17,7 @@ export default function SideBar() {
 const linkStyle= `py-2 flex items-center gap-2 pl-3 1530:justify-center 1530:pl-0`
   return (
     <>
-        <aside className={`max-w-[270px] bg-bg-white flex-1 h-screen gap-[20px] flex flex-col py-[22px] transition-all duration-300 1530:max-w-[106px] 1431:min-w-[86px]  800:absolute 800:right-[-106px] 800:z-20 ${toogleSideBarStyleClass}`}>
+        <aside className={`max-w-[270px] bg-bg-white flex-1 h-screen gap-[20px] flex flex-col py-[22px] transition-all duration-300 1530:max-w-[106px] 1431:min-w-[86px]  800:fixed 800:right-[-106px] 800:z-50 ${toogleSideBarStyleClass} `}>
 
             <div className="flex items-center justify-center pb-[22px] px-6 1530:px-2">
                 <img className='max-w-30 min-w-20' src="/public/images/logoVG.png" alt="" />
@@ -28,20 +25,19 @@ const linkStyle= `py-2 flex items-center gap-2 pl-3 1530:justify-center 1530:pl-
 
             <div className="flex flex-col flex-1">
                 <div className="flex flex-col flex-1">
-                        <Link 
-                            className={`${linkStyle} ${linkActive === 'tasks'? 'active' : ''} `} to='/dashboard'
-                            onClick={()=>setlinkActive('tasks')}
+                        <NavLink 
+                            className={`${linkStyle}  `} to='/dashboard'
+                            end
                         >
                             <i className='bx bx-list-ul text-3xl 1530:text-4xl '></i> <span className='1530:hidden' >Tareas</span>
-                        </Link>
+                        </NavLink>
 
 
-                        <Link 
-                         className={`${linkStyle} ${linkActive === 'users'? 'active' : ''}`} to='/dashboard/users' 
-                         onClick={()=>setlinkActive('users')}
+                        <NavLink 
+                         className={`${linkStyle} `} to='/dashboard/users' 
                         >
                             <i className='bx bx-group text-3xl 1530:text-4xl'></i> <span className='1530:hidden'>Usuarios</span>
-                        </Link>
+                        </NavLink>
                 </div>
 
                 <div className="flex justify-center">

@@ -4,9 +4,9 @@ export default function Filter({changeFilter , filter}) {
   return (
     <div className='flex px-[48px] py-[25px] gap-10 1430:flex-col-reverse 1430:gap-4 960:px-[20px]'>
 
-        <div className="flex gap-[40px] justify-center 530:flex-col 530:gap-[2px]">
+        <div className="flex gap-[40px] justify-center 530:flex-col 550:gap-0">
             <button
-                className={`transition-all duration-300 ${filter === 'total'? 'text-purple-color' : 'text-NoSelectedFilter'} text-[32px] `}
+                className={`transition-all duration-300 ${filter === 'total'? 'text-purple-color' : 'text-NoSelectedFilter'} text-[32px]`}
 
                 onClick={()=>changeFilter('total')}
             >
@@ -33,12 +33,12 @@ export default function Filter({changeFilter , filter}) {
 
         <div className="flex gap-[35px] flex-1 960:flex-col 530:gap-[20px]">
 
-            <div className="flex items-center justify-center bg-bg-white gap-4 text-xl rounded-lg pl-3 w-full flex-1 min-w-[180px] 960">
+            <div className="flex items-center justify-center bg-bg-white gap-4 text-xl rounded-lg pl-3 w-full flex-1 min-w-[180px] 960 z-10">
 
                 <i className='bx bx-search text-3xl text-black-text'></i>
 
                 <input 
-                    className='bg-transparent focus:outline-none w-full '
+                    className='bg-transparent focus:outline-none w-full  '
                     type="text" 
                     placeholder='Buscar tareas por encargado'
                 />
@@ -46,7 +46,7 @@ export default function Filter({changeFilter , filter}) {
             </div>
 
 
-            <div className="flex items-center  py-[3px] px-2 gap-[6px] bg-bg-white rounded-lg text-black-text relative ">
+            <div className="flex items-center  py-[3px] px-2 gap-[6px] bg-bg-white rounded-lg text-black-text relative z-10">
 
                 <select 
                     className='appearance-none bg-transparent text-xl focus:outline-none pl-4 pr-8 z-10 w-full' 

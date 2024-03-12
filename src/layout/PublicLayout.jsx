@@ -8,7 +8,7 @@ export default function PublicLayout() {
     <>
         <UserContextProvider>
           <SideBarContextProvider>
-
+            
             <Outlet/>
           </SideBarContextProvider>
         </UserContextProvider>

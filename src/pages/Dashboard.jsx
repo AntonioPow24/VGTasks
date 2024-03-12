@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Filter from '../components/dashBoard/Filter'
+import Task from '../components/dashBoard/Task'
 
 export default function Dashboard() {
 
@@ -9,20 +10,27 @@ export default function Dashboard() {
   const changeFilter = newFilter => setFilter(newFilter)
 
   return (
-    <>
+    <div className='overflow-y-scroll max-h-screen'>
       <Filter changeFilter={changeFilter} filter={filter} />
 
-      <section className='bg-red-300 px-[48px] grid grid-cols-auto-fill-420 gap-x-[82px] gap-y-[54px]'>
-        <div className="bg-slate-300">
-          1
-        </div>
-        <div className="bg-slate-300">
-          1
-        </div>
-        <div className="bg-slate-300">
-          1ss
-        </div>
+      <section className='px-[40px] grid grid-cols-auto-fill-440 gap-x-[82px] gap-y-[54px] tasksContainer pb-8 961:overflow-y-scroll 960:overflow-y-auto'>
+          <Task />
+          <Task />
+          <Task />
+          <Task />
+          <Task />
+          <Task />
+          <Task />
+          <Task />
+          <Task />
+          <Task />
+          <Task />
+          <Task />
+          <Task />
+          <Task />
+          <Task />
+          <Task />
       </section>
-    </>
+    </div>
   )
 }

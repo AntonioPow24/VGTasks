@@ -9,10 +9,15 @@ export default function PrivateLayout() {
     const {user} = useUserContext()
 
   return (
-    <div className="flex gap-[7px] bg-bg-principal">  
-      <SideBar />
-        <div className="flex flex-col flex-1 min-h-screen">
-          <div className=" w-full flex ">
+    <div className="flex bg-bg-principal max-h-screen ">  
+
+
+
+        <SideBar />
+
+
+        <div className="flex flex-col flex-1 h-screen 960:pt-[74px] max-h-screen">
+          <div className=" w-full flex 960:fixed 960:top-0 z-20  ">
             <Header />
           </div>
           {
