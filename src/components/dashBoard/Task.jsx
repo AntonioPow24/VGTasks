@@ -2,14 +2,14 @@ import React from 'react'
 
 export default function Task() {
   return (
-    <article className='pb-[15px] pt-[8px] px-[17px] flex flex-col gap-[10px] bg-gray-100 rounded-[10px]'>
+    <article className='pb-[15px] pt-[8px] px-[17px] flex flex-col gap-[10px] bg-gray-100 rounded-[10px] dark:bg-[#202020] transition-all duration-300'>
 
         <div className="flex 550:flex-col-reverse 550:gap-[2px]">
 
           <div className="flex  flex-col flex-1 justify-end gap-[10px] 550:items-center 550:gap-[2px]">
             <h4 className='text-skyblue-text text-[18px]' >Direccion destino</h4>
 
-            <h4 className=' text-black-text text-[20px]'>Nombre del Cliente Antonio</h4>
+            <h4 className=' text-black-text text-[20px] dark:text-white-text transition-all duration-300'>Nombre del Cliente Antonio</h4>
           </div>
 
           <div className="flex flex-col items-end  550:flex-row  550:justify-between 550:items-center">
@@ -24,7 +24,7 @@ export default function Task() {
         <div className="flex 550:flex-col">
 
               <div className="flex flex-col flex-1 justify-between gap-[8px]">
-                <p className='text-NoSelectedFilter 550:text-justify'>Descripcion de la tarea Descripcion de la tarea  Descripcion de la tarea  Descripcion de la tarea Descripcion de la tarea  Descripcion de la tarea  </p>
+                <p className='text-NoSelectedFilter 550:text-justify dark:text-[#ffffff80] transition-all duration-300'>Descripcion de la tarea Descripcion de la tarea  Descripcion de la tarea  Descripcion de la tarea Descripcion de la tarea  Descripcion de la tarea  </p>
                 
                 <p className='text-purple-color  flex items-end 550:justify-center'>Encargado de la tarea Takeshi</p>
 

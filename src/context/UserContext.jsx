@@ -5,7 +5,7 @@ const UserContext = createContext()
 
 export default function UserContextProvider({children}){
 
-    const [user,setUser] = useState(true)
+    const [user,setUser] = useState(false)
 
 
 

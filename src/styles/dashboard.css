@@ -1,8 +1,16 @@
 a.active{
     background: #DADDEB;
     border-left: 2px inset #9D78E5 ;
+    transition: all 0.3s;
+}
+
+.dark-mode a.active{
+    background: #3f3f3f;
+    border-left: 2px inset #9D78E5 ;
 
 }
+
+
 
 
 

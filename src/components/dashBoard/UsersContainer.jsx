@@ -3,7 +3,7 @@ import UserCard from './UserCard'
 
 export default function UsersContainer() {
   return (
-    <div className='px-[44px] py-[30px] bg-slate-500 overflow-y-scroll 550:px-[20px] '>
+    <div className='px-[44px] py-[30px] overflow-y-scroll 550:px-[20px] '>
         <div className="flex justify-end">
             <button
                 className='rounded-lg bg-bg-white px-6 py-2 min-w-[190px] newTaskButton'

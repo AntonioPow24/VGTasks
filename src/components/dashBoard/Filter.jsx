@@ -4,9 +4,9 @@ export default function Filter({changeFilter , filter}) {
   return (
     <div className='flex px-[48px] py-[25px] gap-10 1430:flex-col-reverse 1430:gap-4 960:px-[20px]'>
 
-        <div className="flex gap-[40px] justify-center 530:flex-col 550:gap-0">
+        <div className="flex gap-[40px] justify-center 530:flex-col 550:gap-0 ">
             <button
-                className={`transition-all duration-300 ${filter === 'total'? 'text-purple-color' : 'text-NoSelectedFilter'} text-[32px]`}
+                className={`transition-all duration-300 ${filter === 'total'? 'text-purple-color' : 'text-NoSelectedFilter dark:text-[#b3aaaaa4]'} text-[32px]`}
 
                 onClick={()=>changeFilter('total')}
             >
@@ -15,7 +15,7 @@ export default function Filter({changeFilter , filter}) {
             </button>
 
             <button
-                className={`transition-all duration-300 ${filter === 'pending'? 'text-purple-color' : 'text-NoSelectedFilter'} text-[32px]`}
+                className={`transition-all duration-300 ${filter === 'pending'? 'text-purple-color' : 'text-NoSelectedFilter dark:text-[#b3aaaaa4]'} text-[32px]`}
 
                 onClick={()=>changeFilter('pending')}
             ><span className='960:text-[25px]'>Pendientes</span>
@@ -23,7 +23,7 @@ export default function Filter({changeFilter , filter}) {
             </button>
 
             <button
-                className={`transition-all duration-300 ${filter === 'completed'? 'text-purple-color' : 'text-NoSelectedFilter'} text-[32px]`}
+                className={`transition-all duration-300 ${filter === 'completed'? 'text-purple-color' : 'text-NoSelectedFilter dark:text-[#b3aaaaa4]'} text-[32px]`}
 
                 onClick={()=>changeFilter('completed')}
             ><span className='960:text-[25px]'>Completados</span> 
@@ -33,12 +33,12 @@ export default function Filter({changeFilter , filter}) {
 
         <div className="flex gap-[35px] flex-1 960:flex-col 530:gap-[20px]">
 
-            <div className="flex items-center justify-center bg-bg-white gap-4 text-xl rounded-lg pl-3 w-full flex-1 min-w-[180px] 960 z-10">
+            <div className="flex items-center justify-center bg-bg-white dark:bg-[#202020] transition-all duration-300 gap-4 text-xl rounded-lg pl-3 w-full flex-1 min-w-[180px] 960 z-10">
 
-                <i className='bx bx-search text-3xl text-black-text'></i>
+                <i className='bx bx-search text-3xl text-black-text dark:text-bg-white transition-all duration-300'></i>
 
                 <input 
-                    className='bg-transparent focus:outline-none w-full  '
+                    className='bg-transparent focus:outline-none w-full dark:text-white-text transition-all duration-300'
                     type="text" 
                     placeholder='Buscar tareas por encargado'
                 />

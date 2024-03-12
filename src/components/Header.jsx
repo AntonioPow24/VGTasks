@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSideBarContext } from '../context/SideBarContext'
+import { useDarkThemeContext } from '../context/DarkThemeContext'
 
 export default function Header() {
 
@@ -8,9 +9,24 @@ export default function Header() {
 
     const months=['todos','enero' ,'febrero' ,'marzo' ,'abril' ,'mayo' ,'junio' ,'julio', 'agosto' ,'setiembre' ,'octubre', 'noviembre', 'diciembre']
 
+
+    const {darkTheme ,setDarkTheme} = useDarkThemeContext()
+
+    useEffect(()=>{
+        if(darkTheme) {
+
+            document.documentElement.classList.add('dark')
+            localStorage.setItem('theme','dark')
+        }
+        else {
+            document.documentElement.classList.remove('dark')
+            localStorage.setItem('theme','light')
+        }
+      },[darkTheme])
+
   return (
     <>
-        <div className="flex items-center w-full bg-bg-white pl-[48px] gap-5">
+        <div className="flex items-center w-full bg-bg-white pl-[48px] gap-5 dark:bg-[#202020]  transition-all duration-300 rounded-b-md 800:rounded-none">
 
             <i 
                 className='bx bx-menu text-purple-color text-4xl hidden cursor-pointer 800:block' 
@@ -23,7 +39,10 @@ export default function Header() {
 
             <div className="flex gap-[65px] py-[19px] ">
                 <div className="flex items-center justify-center">
-                    <i className='bx bxs-moon text-3xl text-purple-color cursor-pointer'></i>
+                    <button onClick={()=> setDarkTheme(!darkTheme)}>
+                        
+                        <i className={`bx transition-all duration-300 ${darkTheme? 'bxs-sun' : 'bxs-moon' } text-3xl  cursor-pointer text-purple-color`}></i>
+                    </button>
                 </div>
 
             </div>

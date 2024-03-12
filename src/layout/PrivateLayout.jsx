@@ -4,12 +4,16 @@ import SideBar from "../components/SideBar"
 import Header from "../components/Header"
 
 
+
 export default function PrivateLayout() {
 
     const {user} = useUserContext()
 
+
+
+
   return (
-    <div className="flex bg-bg-principal max-h-screen ">  
+    <div className="flex bg-bg-principal max-h-screen gap-1 dark:bg-[#3f3f3f] transition-all duration-300">  
 
 
 
