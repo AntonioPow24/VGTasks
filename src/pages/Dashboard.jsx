@@ -20,7 +20,7 @@ export default function Dashboard() {
           1
         </div>
         <div className="bg-slate-300">
-          1
+          1ss
         </div>
       </section>
     </>
