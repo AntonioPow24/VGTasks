@@ -1,0 +1,42 @@
+a.active{
+    background: #DADDEB;
+    border-left: 2px inset #9D78E5 ;
+
+}
+
+
+
+a.active i , a.active span{
+    color: #9D78E5;
+}
+
+.newTaskButton{
+    background: linear-gradient(90deg,#9D78E5 0%, #4BB6D8 100% );
+}
+.newTaskButton:hover{
+    background: linear-gradient(90deg,#9472da 0%, #47aac9 100% );
+}
+
+
+
+
+
+.asideOpen{
+    animation: AsideOpen .3s ;
+    right: 0;
+    transition: all 0.3s;
+
+
+}
+
+@keyframes AsideOpen{
+    from{
+        right: -106px ;
+    }
+    to{
+        right: 0;
+        display: flex;
+    }
+}
+
+
