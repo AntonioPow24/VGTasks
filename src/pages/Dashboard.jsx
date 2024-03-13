@@ -10,10 +10,10 @@ export default function Dashboard() {
   const changeFilter = newFilter => setFilter(newFilter)
 
   return (
-    <div className='overflow-y-scroll max-h-screen'>
+    <div className='overflow-y-scroll max-h-screen hide-scrollbar'>
       <Filter changeFilter={changeFilter} filter={filter} />
 
-      <section className='px-[40px] grid grid-cols-auto-fill-440 gap-x-[82px] gap-y-[54px] tasksContainer pb-8 961:overflow-y-scroll 960:overflow-y-auto'>
+      <section className='px-[40px] grid grid-cols-auto-fill-440 gap-x-[82px] gap-y-[54px] tasksContainer pb-8 961:overflow-y-scroll 960:overflow-y-auto hide-scrollbar'>
           <Task />
           <Task />
           <Task />

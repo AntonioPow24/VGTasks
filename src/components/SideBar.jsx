@@ -4,15 +4,29 @@ import { Link, NavLink } from 'react-router-dom'
 import '../styles/dashboard.css'
 import { useSideBarContext } from '../context/SideBarContext'
 import { useDarkThemeContext } from '../context/DarkThemeContext'
+import { logout } from '../config/firebase'
+import { useUserContext } from '../context/UserContext'
 
 export default function SideBar() {
 
+    const [userTitleVisible ,setUserTitleVisible]= useState(false)
 
     const {toogleSideBar} = useSideBarContext()
     const {darkTheme} = useDarkThemeContext()
+    
+    const {user} = useUserContext()
 
 
     const toogleSideBarStyleClass = toogleSideBar? 'asideOpen' : ''
+
+    const handleLogOut = async ()=>{
+        try {
+            await logout()
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
 
 
 const linkStyle= `py-2 flex items-center gap-2 pl-3 1530:justify-center 1530:pl-0`
@@ -41,13 +55,24 @@ const linkStyle= `py-2 flex items-center gap-2 pl-3 1530:justify-center 1530:pl-
                         </NavLink>
                 </div>
 
-                <div className="flex justify-center">
-                    <p className="py-2 flex items-center gap-2 p-3 justify-center"><i className='bx bx-user text-2xl 1530:text-3xl dark:text-white-text transition-all duration-300'></i><span className='1530:hidden transition-all duration-300 dark:text-white-text'>Antonio Romero</span></p>
+                <div className="flex justify-center relative items-center" onClick={()=> {setUserTitleVisible(!userTitleVisible); console.log(userTitleVisible)}
+                }>
+                    <p className="py-2 flex items-center gap-2 p-3 justify-center"><i className='bx bx-user text-2xl 1530:text-3xl dark:text-white-text transition-all duration-300'></i><span className='1530:hidden transition-all duration-300 dark:text-white-text'>{user?.email}</span></p>
+                    
+                    <div className={`${userTitleVisible? 'flex': 'hidden' }  items-center justify-center px-2 py-1 absolute bg-[#202020] dark:bg-white rounded-[3px]  left-[75%] 800:right-[75%] 800:left-auto 1551:hidden`}>
+                        <p className='dark:text-black-text text-white-text text-xl'>{user?.email}</p>
+                    </div>
                 </div>
             </div>
 
-            <div className="flex items-center justify-center px-6 1530:px-3">
-                <button className='bg-red-400 w-full rounded-md py-2 text-bg-white hover:bg-red-500 1430:px-4'> <i className='bx bx-log-out-circle 1430:text-2xl '></i> <span className='1530:hidden'>Cerrar Sesion</span></button>
+            <div className="flex items-center justify-center px-6 1530:px-3 ">
+                <button 
+                    className='bg-red-400 w-full rounded-md py-2 text-bg-white hover:bg-red-500 1430:px-4 flex justify-center items-center gap-3'
+                    onClick={handleLogOut}
+                > 
+                    <i className='bx bx-log-out-circle 1430:text-2xl '></i> 
+                    <span className='1530:hidden'>Cerrar Sesion</span>
+                </button>
             </div>
         </aside>
     </>

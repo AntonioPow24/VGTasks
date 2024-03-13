@@ -1,20 +1,18 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSideBarContext } from '../context/SideBarContext'
 import { useDarkThemeContext } from '../context/DarkThemeContext'
 
 export default function Header() {
 
     const {toogleSideBar,setToogleSideBar} = useSideBarContext()
-    
-
-    const months=['todos','enero' ,'febrero' ,'marzo' ,'abril' ,'mayo' ,'junio' ,'julio', 'agosto' ,'setiembre' ,'octubre', 'noviembre', 'diciembre']
-
-
     const {darkTheme ,setDarkTheme} = useDarkThemeContext()
+    const [selectedMonth,setSelectedMonth] = useState('')
 
+    
+    // Use Effect para manejar el darkTheme
     useEffect(()=>{
         if(darkTheme) {
-
+            
             document.documentElement.classList.add('dark')
             localStorage.setItem('theme','dark')
         }
@@ -22,7 +20,26 @@ export default function Header() {
             document.documentElement.classList.remove('dark')
             localStorage.setItem('theme','light')
         }
-      },[darkTheme])
+    },[darkTheme])
+
+
+    //Use Effect para manejar el Mes seleccionado
+    useEffect(()=>{
+        const savedMonth = localStorage.getItem('selectedMonth') //obtiene valor del localStorage
+
+        if(savedMonth) setSelectedMonth(savedMonth)
+    },[])
+
+
+    // Funcion para obtener el valor del mes Seleccionado
+    const handleMonthChange = (e) =>{
+        const month = e.target.value //Obtiene valor del select
+        setSelectedMonth(month)
+        localStorage.setItem('selectedMonth',month) //guarda en local Storage
+    }
+
+
+    const months=['todos','enero' ,'febrero' ,'marzo' ,'abril' ,'mayo' ,'junio' ,'julio', 'agosto' ,'setiembre' ,'octubre', 'noviembre', 'diciembre']
 
   return (
     <>
@@ -48,7 +65,13 @@ export default function Header() {
             </div>
 
             <div className="flex items-center px-2 relative bg-purple-color h-full  960:w-full">
-                    <select  className="text-[35px]  text-center w-full capitalize text-white-text bg-transparent focus:outline-none appearance-none z-10 px-8 530:px-2 530:text-[25px] " name="month" id="month" defaultValue={`todos`}>
+                    <select  
+                        className="text-[35px]  text-center w-full capitalize text-white-text bg-transparent focus:outline-none appearance-none z-10 px-8 530:px-2 530:text-[25px] " 
+                        name="month" 
+                        id="month" 
+                        value={selectedMonth}
+                        onChange={handleMonthChange}
+                    >
 
                         {
                             months.map(month => <option key={month} className="text-xl my-2 text-black-text" value={month}>{month}</option>)

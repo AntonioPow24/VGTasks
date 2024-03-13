@@ -52,12 +52,14 @@ export default function Filter({changeFilter , filter}) {
                     className='appearance-none bg-transparent text-xl focus:outline-none pl-4 pr-8 z-10 w-full' 
                     name="filterOrderBy" 
                     id="filterOrderBy"
+                    defaultValue=""
                     
                 >
-                    <option className='text-[16px] text-NoSelectedFilter' value="" disabled selected={true}>Ordenar por</option>
+                    <option className='text-[16px] text-NoSelectedFilter' value="" disabled >Ordenar por</option>
                     <option className='text-[16px] text-black-text' value="encargado">Encargado</option>
                     <option className='text-[16px] text-black-text' value="fecha">Fecha</option>
                 </select>
+
                     <i className='bx bx-chevron-down text-3xl pt-1 text-black-text absolute right-0' ></i>
 
                 
