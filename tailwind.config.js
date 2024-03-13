@@ -18,7 +18,7 @@ export default {
       gridTemplateColumns: {
         'auto-fill-440': 'repeat(auto-fill, minmax(445px, 1fr))',
         'auto-fill-480': 'repeat(auto-fill, minmax(480px, 1fr))',
-        'auto-fill-450': 'repeat(auto-fill, minmax(450px, 1fr))',
+        'auto-fill-450': 'repeat(auto-fill, minmax(350px, 1fr))',
       },
     },
 
