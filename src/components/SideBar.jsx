@@ -44,20 +44,20 @@ const linkStyle= `py-2 flex items-center gap-2 pl-3 1530:justify-center 1530:pl-
                             className={`${linkStyle} `} to='/dashboard'
                             end
                         >
-                            <i className='bx bx-list-ul text-3xl 1530:text-4xl dark:text-white-text transition-all duration-300'></i> <span className='1530:hidden dark:text-white-text transition-all duration-300' >Tareas</span>
+                            <i className='bx bx-list-ul text-3xl 1530:text-3xl dark:text-white-text transition-all duration-300'></i> <span className='1530:hidden dark:text-white-text transition-all duration-300' >Tareas</span>
                         </NavLink>
 
 
                         <NavLink 
                          className={`${linkStyle} `} to='/dashboard/users' 
                         >
-                            <i className='bx bx-group text-3xl 1530:text-4xl dark:text-white-text transition-all duration-300'></i> <span className='1530:hidden dark:text-white-text transition-all duration-300'>Usuarios</span>
+                            <i className='bx bx-group text-3xl 1530:text-3xl dark:text-white-text transition-all duration-300'></i> <span className='1530:hidden dark:text-white-text transition-all duration-300'>Usuarios</span>
                         </NavLink>
                 </div>
 
                 <div className="flex justify-center relative items-center" onClick={()=> {setUserTitleVisible(!userTitleVisible); console.log(userTitleVisible)}
                 }>
-                    <p className="py-2 flex items-center gap-2 p-3 justify-center"><i className='bx bx-user text-2xl 1530:text-3xl dark:text-white-text transition-all duration-300'></i><span className='1530:hidden transition-all duration-300 dark:text-white-text'>{user?.email}</span></p>
+                    <p className="py-2 flex items-center gap-2 p-3 justify-center"><i className='bx bx-user text-2xl 1530:text-2xl dark:text-white-text transition-all duration-300'></i><span className='1530:hidden transition-all duration-300 dark:text-white-text'>{user?.email}</span></p>
                     
                     <div className={`${userTitleVisible? 'flex': 'hidden' }  items-center justify-center px-2 py-1 absolute bg-[#202020] dark:bg-white rounded-[3px]  left-[75%] 800:right-[75%] 800:left-auto 1551:hidden`}>
                         <p className='dark:text-black-text text-white-text text-xl'>{user?.email}</p>
@@ -70,7 +70,7 @@ const linkStyle= `py-2 flex items-center gap-2 pl-3 1530:justify-center 1530:pl-
                     className='bg-red-400 w-full rounded-md py-2 text-bg-white hover:bg-red-500 1430:px-4 flex justify-center items-center gap-3'
                     onClick={handleLogOut}
                 > 
-                    <i className='bx bx-log-out-circle 1430:text-2xl '></i> 
+                    <i className='bx bx-log-out-circle 1530:text-2xl '></i> 
                     <span className='1530:hidden'>Cerrar Sesion</span>
                 </button>
             </div>

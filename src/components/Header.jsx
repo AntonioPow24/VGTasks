@@ -43,7 +43,7 @@ export default function Header() {
 
   return (
     <>
-        <div className="flex items-center w-full bg-bg-white pl-[48px] gap-5 dark:bg-[#202020]  transition-all duration-300 rounded-b-md 800:rounded-none">
+        <div className="flex items-center w-full bg-bg-white pl-[48px] gap-5 dark:bg-[#202020]  transition-all duration-300 rounded-b-md 800:rounded-none 960:px-[20px]">
 
             <i 
                 className='bx bx-menu text-purple-color text-4xl hidden cursor-pointer 800:block' 
