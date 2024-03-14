@@ -1,27 +1,45 @@
 import React, { useEffect, useState } from 'react'
 import UserCard from './UserCard'
 import ModalRegister from '../ModalRegister'
-// import { getAuth ,listUsers } from 'firebase/auth'
 
+
+// import { getAuth ,listUsers } from 'firebase/auth'
+const URLDomain = "http://localhost:5001"
+console.log(URLDomain);
 export default function UsersContainer() {
 
   // const [usersFirebase ,setUsersFirebase] = useState([])
   const [modalRegisterUser ,setModalRegisterUser]= useState(false)
 
-  // useEffect(()=>{
-  //   const auth =getAuth()
+  const [users,setUsers]=useState([])
 
-  //   listUsers(auth)
-  //     .then( userRecords => {
-  //       const usersData = userRecords.map(userRecord => {email:userRecord.email})
+  const [hasNewRegister ,setHasNewRegister] =useState(false)
 
-  //       setUsersFirebase(usersData)
-  //     })
-  //     .catch( error => console.error('Error al obtener la lista de usuarios',error))
-  // },[usersFirebase])
+  
+
+  useEffect( () => {
+
+   const fetchUsers = async()=>{
+
+     try {
+         const res = await fetch(`${URLDomain}/api/users`)
+         const data = await res.json()
+ 
+         setUsers(data);
+         
+     } catch (error) {
+       console.log(error);
+     }
+   } 
+
+   setHasNewRegister(false)
 
 
-  // console.log(usersFirebase);
+   fetchUsers()
+  }, [hasNewRegister]);
+
+
+
 
   const toggleModalRegisterUser = ()=>{
     setModalRegisterUser(!modalRegisterUser)
@@ -42,18 +60,14 @@ export default function UsersContainer() {
         </div>
 
         <div className="grid grid-cols-auto-fill-480 gap-[22px] mt-[40px] 550:grid-cols-auto-fill-450">
-                <UserCard />
-                <UserCard />
-                <UserCard />
-                <UserCard />
-                <UserCard />
-                <UserCard />
-                <UserCard />
 
+          {
+            users && users.map( user => <UserCard email={user.email}  key={user.uid}/>)
+          }
         </div>
     </div>
         {
-      modalRegisterUser && <ModalRegister toggleModalRegisterUser={toggleModalRegisterUser} />
+      modalRegisterUser && <ModalRegister setHasNewRegister={setHasNewRegister} toggleModalRegisterUser={toggleModalRegisterUser} setModalRegisterUser={setModalRegisterUser}/>
         }
 
 

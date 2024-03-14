@@ -1,10 +1,10 @@
 import React from 'react'
 
-export default function UserCard() {
+export default function UserCard({email}) {
   return (
     <article className='px-4 flex bg-white dark:bg-[#202020] transition-all duration-300 py-[19px] rounded-[10px] items-center'>
         <div className="flex-1">
-            <p className='text-black-text text-2xl 800:text-xl dark:text-white-text transition-all duration-300'>Nombre del Usuario</p>
+            <p className='text-black-text text-2xl 800:text-xl dark:text-white-text transition-all duration-300'>{email}</p>
         </div>
 
         <div className="flex gap-[15px]">
