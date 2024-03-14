@@ -24,7 +24,7 @@ export default function UsersContainer() {
      try {
          const res = await fetch(`${URLDomain}/api/users`)
          const data = await res.json()
- 
+
          setUsers(data);
          
      } catch (error) {

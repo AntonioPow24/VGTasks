@@ -1,13 +1,21 @@
 import express from 'express'
 import admin from 'firebase-admin'
 import cors from 'cors'
+import dotenv from 'dotenv'
+import path from 'path'
+
+dotenv.config({
+  path: path.resolve('./', '.env.local')
+})
+
+
 const serviceAccount = {
     "type": "service_account",
-    "project_id": import.meta.env.PROJECT_ID,
-    "private_key_id": import.meta.env.PRIVATE_KEY_ID,
-    "private_key": import.meta.env.PRIVATE_KEY,
-    "client_email": import.meta.env.CLIENT_EMAIL,
-    "client_id": import.meta.env.CLIENT_ID,
+    "project_id": process.env.VITE_PROJECT_ID,
+    "private_key_id": process.env.VITE_PRIVATE_KEY_ID,
+    "private_key": process.env.VITE_PRIVATE_KEY,
+    "client_email": process.env.VITE_CLIENT_EMAIL,
+    "client_id": process.env.VITE_CLIENT_ID,
     "auth_uri": "https://accounts.google.com/o/oauth2/auth",
     "token_uri": "https://oauth2.googleapis.com/token",
     "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
