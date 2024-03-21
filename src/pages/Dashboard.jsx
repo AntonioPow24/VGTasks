@@ -7,6 +7,7 @@ import TasksContainer from '../components/dashBoard/TasksContainer'
 import { useMonthSelectedContext } from '../context/MonthSelectedContext'
 
 import { orderByDate } from '../utils/orderByDate'
+import orderByMonth from '../utils/orderByMonth'
 
 export default function Dashboard() {
 
@@ -41,9 +42,11 @@ export default function Dashboard() {
 
     // CAMBIO DE FILTRO POR MES
     if(monthSelected === 'todos'){
-      dataFiltered = data
+      dataFiltered = orderByMonth(data)
+
     }else{
       dataFiltered = data.filter( task => task.date.toUpperCase().includes(monthSelected.toUpperCase()))
+      console.log('hola');
     }
 
     return dataFiltered

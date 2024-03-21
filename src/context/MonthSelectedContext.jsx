@@ -7,7 +7,7 @@ const MonthSelectedContext = createContext()
 
 export default function MonthSelectedContextProvider({children}){
 
-    const [monthSelected,setMonthSelected] = useState(localStorage.getItem('selectedMonth'))
+    const [monthSelected,setMonthSelected] = useState(localStorage.getItem('selectedMonth') || 'todos')
 
 
 
