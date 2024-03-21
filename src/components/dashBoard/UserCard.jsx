@@ -1,7 +1,16 @@
-import React from 'react'
+
+import React, { useState } from 'react'
+import PopMessage from '../popUps/PopMessage';
+
 
 export default function UserCard({email}) {
+
+    const [deleteSuccess ,setDeleteSuccess] = useState(false)
+
+
   return (
+    <>
+    
     <article className='px-4 flex bg-white dark:bg-[#202020] transition-all duration-300 py-[19px] rounded-[10px] items-center'>
         <div className="flex-1">
             <p className='text-black-text text-2xl 800:text-xl dark:text-white-text transition-all duration-300'>{email}</p>
@@ -12,10 +21,19 @@ export default function UserCard({email}) {
                 <i className="bx bx-edit text-xl text-white-text"></i>
             </button>
 
-            <button className='px-3 py-2 bg-purple-color flex items-center justify-center rounded-[4px] hover:bg-[#8e6cd1]'>
+            {/* <button 
+                className='px-3 py-2 bg-purple-color flex items-center justify-center rounded-[4px] hover:bg-[#8e6cd1]'
+                onClick={handleDeleteUser}
+            >
                 <i className="bx bx-x text-2xl text-white-text font-thin"></i>
-            </button>
+            </button> */}
         </div>
     </article>
+    
+    { deleteSuccess && <PopMessage message='Usuario Eliminado Correctamente'/>}
+    </>
+
+
+
   )
 }

@@ -45,7 +45,7 @@ app.get('/api/users', async (req, res) => {
       // Otros datos que desees incluir
     }));
 
-    console.log(usersData);
+
     res.json(usersData);
   } catch (error) {
     console.error("Error al obtener la lista de usuarios:", error);

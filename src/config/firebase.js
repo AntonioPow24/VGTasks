@@ -1,6 +1,10 @@
 
+
 import { initializeApp } from "firebase/app";
 import {getAuth, signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword} from 'firebase/auth'
+
+import { collection, deleteDoc, getDocs, getFirestore, setDoc, updateDoc} from 'firebase/firestore/lite'
+
 
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -14,13 +18,25 @@ const firebaseConfig = {
 
   const app = initializeApp(firebaseConfig);
 
+  // Inicializacion de la Authentication y Firestore
   export const auth = getAuth(app)
-
+  export const db = getFirestore(app)
 
   
-
+  // Metodos Authentication
   export const login =({email ,password}) => signInWithEmailAndPassword(auth ,email ,password)
 
   export const register = ({email,password}) => createUserWithEmailAndPassword(auth,email ,password)
 
   export const logout = ()=> signOut(auth)
+
+
+
+  // Metodos FireStore
+  export const getData = () => getDocs(collection(db,'tasks'))
+
+  export const addNewTask = ({docRef, newTask}) => setDoc(docRef,newTask)
+
+  export const updateTask = (docRef , newTask) => updateDoc(docRef,newTask)
+
+  export const deleteTask = ({docRef}) => deleteDoc(docRef)

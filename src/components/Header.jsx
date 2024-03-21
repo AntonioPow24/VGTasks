@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useSideBarContext } from '../context/SideBarContext'
 import { useDarkThemeContext } from '../context/DarkThemeContext'
+import { useMonthSelectedContext } from '../context/MonthSelectedContext'
 
 export default function Header() {
 
     const {toogleSideBar,setToogleSideBar} = useSideBarContext()
     const {darkTheme ,setDarkTheme} = useDarkThemeContext()
-    const [selectedMonth,setSelectedMonth] = useState('')
+
+    const {monthSelected,setMonthSelected} = useMonthSelectedContext()
 
     
     // Use Effect para manejar el darkTheme
@@ -27,14 +29,14 @@ export default function Header() {
     useEffect(()=>{
         const savedMonth = localStorage.getItem('selectedMonth') //obtiene valor del localStorage
 
-        if(savedMonth) setSelectedMonth(savedMonth)
+        if(savedMonth) setMonthSelected(savedMonth)
     },[])
 
 
     // Funcion para obtener el valor del mes Seleccionado
     const handleMonthChange = (e) =>{
         const month = e.target.value //Obtiene valor del select
-        setSelectedMonth(month)
+        setMonthSelected(month)
         localStorage.setItem('selectedMonth',month) //guarda en local Storage
     }
 
@@ -69,7 +71,7 @@ export default function Header() {
                         className="text-[35px]  text-center w-full capitalize text-white-text bg-transparent focus:outline-none appearance-none z-10 px-8 530:px-2 530:text-[25px] " 
                         name="month" 
                         id="month" 
-                        value={selectedMonth}
+                        value={monthSelected}
                         onChange={handleMonthChange}
                     >
 

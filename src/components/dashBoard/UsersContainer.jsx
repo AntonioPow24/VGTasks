@@ -4,8 +4,9 @@ import ModalRegister from '../ModalRegister'
 
 
 // import { getAuth ,listUsers } from 'firebase/auth'
-const URLDomain = "http://localhost:5001"
-console.log(URLDomain);
+
+const backendUrl = import.meta.env.VITE_BACKEND_DOMAIN + '/api/users'
+
 export default function UsersContainer() {
 
   // const [usersFirebase ,setUsersFirebase] = useState([])
@@ -13,20 +14,20 @@ export default function UsersContainer() {
 
   const [users,setUsers]=useState([])
 
+
   const [hasNewRegister ,setHasNewRegister] =useState(false)
 
-  
 
   useEffect( () => {
 
    const fetchUsers = async()=>{
 
      try {
-         const res = await fetch(`${URLDomain}/api/users`)
+         const res = await fetch(backendUrl)
          const data = await res.json()
 
          setUsers(data);
-         
+
      } catch (error) {
        console.log(error);
      }
@@ -62,7 +63,13 @@ export default function UsersContainer() {
         <div className="grid grid-cols-auto-fill-480 gap-[22px] mt-[40px] 550:grid-cols-auto-fill-450">
 
           {
-            users && users.map( user => <UserCard email={user.email}  key={user.uid}/>)
+            users && users.map( user => 
+            <UserCard 
+              email={user.email} 
+              uid={user.uid}  
+              key={user.uid}
+              setHasNewRegister={setHasNewRegister}
+            />)
           }
         </div>
     </div>

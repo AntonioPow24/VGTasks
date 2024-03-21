@@ -100,11 +100,6 @@ export default function ModalRegister({toggleModalRegisterUser ,setModalRegister
 
             </form>
 
-
-
-
-
-
     </section>
   )
 }
