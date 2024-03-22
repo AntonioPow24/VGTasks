@@ -1,7 +1,10 @@
 import React from 'react'
+import UsersContainer from '../components/dashBoard/UsersContainer'
 
 export default function Users() {
   return (
-    <div>Users</div>
+    <>
+      <UsersContainer />
+    </>
   )
 }

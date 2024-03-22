@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors:{
-        'bg-white':'#F5F8FC',
+        'bg-white':'#FFFAF4',
         'bg-principal':'#DADDEB',
         'black-text':'#343434',
         'white-text':'#EEEEEE',
@@ -16,11 +16,16 @@ export default {
         'NoSelectedFilter':'#21212175',
       },
       gridTemplateColumns: {
-        'auto-fill-420': 'repeat(auto-fill, minmax(420px, 1fr))',
+        'auto-fill-440': 'repeat(auto-fill, minmax(445px, 1fr))',
+        'auto-fill-480': 'repeat(auto-fill, minmax(480px, 1fr))',
+        'auto-fill-450': 'repeat(auto-fill, minmax(350px, 1fr))',
       },
     },
 
     screens: {
+
+      '550':{'max':'550px'},
+
       '530': {'max':'530px'},
 
       // => @media (min-width: 640px) { ... }
@@ -32,14 +37,18 @@ export default {
       // => @media (min-width: 1024px) { ... }
 
       '1431': '1431px',
+      '961': '961px',
       // => @media (min-width: 1280px) { ... }
 
       '1430': {'max':'1430px'},
       // => @media (min-width: 1536px) { ... }
-      '1530':{'max':'1550px'}
+      '1530':{'max':'1550px'},
+      '1551':'1551px',
+
     }
 
     
   },
+  darkMode:'class',
   plugins: [],
 }

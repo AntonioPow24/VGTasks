@@ -5,11 +5,23 @@
 }
 
 
+.inputToWrite textarea:focus  ~ label , .inputToWrite textarea:not(:placeholder-shown) ~ label{
+    transform: translateY(-60px) translateX(-8px);
+    transform-origin: left top;
+    color: #9D78E5;
+}
+
+
 .inputToWrite label{
     transition: all 0.3s;
 }
 
-.inputToWrite input{
+.inputToWrite input[type="date"]::-webkit-inner-spin-button,
+.inputToWrite input[type="time"]::-webkit-inner-spin-button{
+    display: none;
+}
+
+.inputToWrite input, .inputToWrite textarea{
     z-index: 1;
     background: none;
     outline: none;
