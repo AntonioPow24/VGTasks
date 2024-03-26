@@ -27,7 +27,6 @@ export default function Login() {
     try {
       const userCredentials = await login({email,password})
       
-      console.log(userCredentials);
     } catch (error) {
       console.log(error);
     }

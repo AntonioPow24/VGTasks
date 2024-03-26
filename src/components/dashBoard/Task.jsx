@@ -32,7 +32,7 @@ export default function Task({task,updateStateFromFirebase,updateTaskFromFirebas
 
 
   return (
-    <article className='pb-[15px] pt-[8px] px-[17px] flex flex-col gap-[10px] bg-gray-100 rounded-[10px] dark:bg-[#202020] transition-all duration-300'>
+    <article className={`pb-[15px] pt-[8px] px-[17px] flex flex-col gap-[10px] bg-gray-100 rounded-[10px] dark:bg-[#202020] transition-all duration-300 ${completed && 'border-2 border-[#be4848cc]'}`}>
 
         <div className="flex 550:flex-col-reverse 550:gap-[2px]">
 
@@ -44,7 +44,7 @@ export default function Task({task,updateStateFromFirebase,updateTaskFromFirebas
 
           <div className="flex flex-col items-end  550:flex-row  550:justify-between 550:items-center">
 
-                <span className='text-purple-color text-[32px] font-semibold 550:text-[24px]'>{date}</span>
+                <span className={`text-purple-color text-[32px] font-semibold 550:text-[24px] ${completed && 'line-through'}`}>{date}</span>
                 <span className='text-purple-color text-xl 550:text-[14px]'>{hour}</span>
           </div>
 
@@ -53,10 +53,14 @@ export default function Task({task,updateStateFromFirebase,updateTaskFromFirebas
 
         <div className="flex 550:flex-col">
 
-              <div className="flex flex-col flex-1 justify-between gap-[8px]">
-                <p className='text-NoSelectedFilter 550:text-justify dark:text-[#ffffff80] transition-all duration-300'>{description} </p>
+              <div className="flex flex-col flex-1 justify-between gap-[8px] pr-2">
+                <p className={`text-NoSelectedFilter 550:text-justify dark:text-[#ffffff80] transition-all duration-300 ${completed && 'line-through'}`}>{description} </p>
                 
-                <p className='text-purple-color  flex items-end 550:justify-center'>{inCharge}</p>
+                <div className='flex'>
+
+                  <p className='text-purple-color  flex items-end 550:justify-center'>{inCharge} </p>
+                  {completed && <span className='w-full text-red-400 text-2xl text-center'>COMPLETADO</span> }
+                </div>
 
 
               </div>
@@ -71,18 +75,18 @@ export default function Task({task,updateStateFromFirebase,updateTaskFromFirebas
                 </button>
 
 
-                {
-                  completed? <div className='w-full text-red-400 text-2xl'>COMPLETADO</div> 
 
-                  :
+
                     <div className='flex gap-3 550:w-full 550:gap-2'>
+
+                      {completed || 
                         <button
                           className='py-2 px-3  bg-purple-color rounded-[4px] 550:flex-1 hover:bg-[#882f94] transition-all duration-300'
                           onClick={() => handleEditTask('Editar tarea','Editar tarea','update')}
                         >
                           Editar
                         </button>
-
+                      }
                         <button
                           className='py-2 px-3 550:flex-1 bg-skyblue-text rounded-[4px]'
                           onClick={handleDeleteTask}
@@ -91,7 +95,10 @@ export default function Task({task,updateStateFromFirebase,updateTaskFromFirebas
                         </button>
 
                     </div>
-                }
+
+
+
+
 
               </div>
         </div>

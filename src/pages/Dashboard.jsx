@@ -45,8 +45,8 @@ export default function Dashboard() {
       dataFiltered = orderByMonth(data)
 
     }else{
-      dataFiltered = data.filter( task => task.date.toUpperCase().includes(monthSelected.toUpperCase()))
-      console.log('hola');
+      dataFiltered = orderByMonth(data.filter( task => task.date.toUpperCase().includes(monthSelected.toUpperCase())))
+
     }
 
     return dataFiltered

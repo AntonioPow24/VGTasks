@@ -31,8 +31,6 @@ export default function useFirestore() {
             const dataDB= querySnapShot.docs.map( doc => doc.data()) //Obtener los datos, funcion explicita de firebase
             
             setData(dataDB)
-
-
         } catch (error) {
 
             console.log(error);
@@ -93,21 +91,22 @@ export default function useFirestore() {
 
             setLoading(prev => ({...prev , updateData:true}))
 
-            const docRef = doc(db, collection , id)
 
-            await updateTask(docRef,{completed: newState})
-
-            const newTasks = data.map(task =>{
-                if(task.id === id){
-                    task.completed = !task.completed
+                const docRef = doc(db, collection , id)
+    
+                await updateTask(docRef,{completed: newState})
+    
+                const newTasks = data.map(task =>{
+                    if(task.id === id){
+                        task.completed = !task.completed
+                        return task
+                    }
+    
                     return task
-                }
-
-                return task
-            })
-
-
-            setData(newTasks)
+                })
+    
+    
+                setData(newTasks)
 
         } catch (error) {
 
@@ -159,7 +158,9 @@ export default function useFirestore() {
 
             setData(newTasks)
             toggleModalNewTask()
-        } catch (error) {
+
+        }
+         catch (error) {
 
             console.log(error);
             setError(error.message)

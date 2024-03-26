@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { handleListen } from '../utils/handleListenMicrophone'
 import { formatDateToISO, formatTimeToISO } from '../utils/formatDateString'
+import LoaderIcon from './LoaderIcon'
 
 
 export default function ModalCreateTask({toggleModalNewTask, generalDataForm,addDataToFirebase, taskToEdit=null ,updateTaskFromFirebase }) {
@@ -8,6 +9,9 @@ export default function ModalCreateTask({toggleModalNewTask, generalDataForm,add
 
 
   const {titleForm , buttonForm , methodForm} = generalDataForm
+
+  const [inProcess,setInProcess] = useState(false)
+
 
   // ESTADO PARA LOS DATOS DE LA TAREA
   const [dataNewTask , setDataNewTask] = useState({
@@ -20,7 +24,8 @@ export default function ModalCreateTask({toggleModalNewTask, generalDataForm,add
     completed:false
   })
 
-
+  // Estado para saber si esta escuchando o no
+  const [listening, setListening] = useState(false);
 
 
   // Estilos para el input
@@ -40,23 +45,38 @@ export default function ModalCreateTask({toggleModalNewTask, generalDataForm,add
   }
 
 
-  const handleSubmitTaskForm = e =>{
+  const handleSubmitTaskForm = async (e) =>{
     e.preventDefault()
 
-    methodForm === 'create'?
-      addDataToFirebase(dataNewTask,toggleModalNewTask)
+    try {
+      setInProcess(true)
 
-    : 
-      updateTaskFromFirebase('tasks',taskToEdit.id,dataNewTask,toggleModalNewTask)
+      methodForm === 'create'?
+      await addDataToFirebase(dataNewTask,toggleModalNewTask)
+
+      : 
+      await updateTaskFromFirebase('tasks',taskToEdit.id,dataNewTask,toggleModalNewTask)
+
+    } catch (error) {
+        console.log(error);
+      
+    }finally{
+      setInProcess(false)
+    }
+
 
   }
 
 
-  const handleListening =(e)=>{
+  const handleListening =()=>{
 
-    handleListen(dataNewTask,setDataNewTask)
+      handleListen(dataNewTask, setDataNewTask);
+
   }
 
+  // const handleEndListening = () => {
+  //   setListening(false); // Marcar que el reconocimiento de voz ya no está activo
+  // }
 
 
   return (
@@ -69,7 +89,7 @@ export default function ModalCreateTask({toggleModalNewTask, generalDataForm,add
 
 
         <form   
-              className='max-w-[600px] 550:min-w-[300px] bg-bg-white flex flex-col justify-center items-center gap-[23px] py-[27px] px-[41px] 550:px-[15px] rounded-xl absolute'
+              className='550:max-w-[380px] 550:min-w-[300px] bg-bg-white flex flex-col justify-center items-center gap-[23px] py-[27px] px-[41px] 550:px-[15px] rounded-xl absolute'
               
         >
 
@@ -107,7 +127,7 @@ export default function ModalCreateTask({toggleModalNewTask, generalDataForm,add
                     <i 
                       className='bx bx-microphone text-xl text-purple-color hover:scale-150 transition-all duration-300 cursor-pointer'
 
-                      onClick={handleListening}
+                      onClick={handleListening  }
                     >
 
                     </i>
@@ -117,11 +137,11 @@ export default function ModalCreateTask({toggleModalNewTask, generalDataForm,add
 
 
                 {/* DIRECCION Y ENCARGADO DE LA TAREA */}
-                <div className='flex gap-4'>
+                <div className='w-full flex gap-4'>
 
-                  <div className={`${inputStyle} h-[36px]`}>
+                  <div className={`${inputStyle}  h-[36px]`}>
                       <input 
-                          className='flex-1  h-full' 
+                          className='flex-1  550:max-w-[138px] h-full' 
                           type="text"  
                           name='direction' 
                           placeholder=' '
@@ -129,14 +149,14 @@ export default function ModalCreateTask({toggleModalNewTask, generalDataForm,add
                           onChange={handleChangeDataTask}
                       />
                                   
-                      <i className='bx bx-home text-xl text-purple-color'></i>
+                      <i className='bx bx-home text-xl text-purple-color '></i>
 
                       <label className='absolute left-[9px] text-NoSelectedFilter' htmlFor="email">Direccion</label>
                   </div>
 
                   <div className={`${inputStyle} h-[36px]`}>
                       <input 
-                          className='flex-1  h-full' 
+                          className='flex-1 550:max-w-[138px]  h-full' 
                           type="text"  
                           name='inCharge'
                           required 
@@ -193,10 +213,10 @@ export default function ModalCreateTask({toggleModalNewTask, generalDataForm,add
 
               <button 
                 type='submit' 
-                className='bg-purple-color w-full rounded-md py-2 text-white-text '
+                className='bg-purple-color w-full rounded-md py-2 text-white-text flex justify-center items-center'
                 onClick={handleSubmitTaskForm}
               >
-                {buttonForm}
+                {inProcess? <span className='flex items-center gap-3'>Cargando    <LoaderIcon/></span> : buttonForm}
               </button>
 
         </form>
